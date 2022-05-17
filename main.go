@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	swaggerFilePath = "gen/http/openapi.json"
+	swaggerFilePath = "gen/http/openapi.yaml"
 )
 
 func main() {
