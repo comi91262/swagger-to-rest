@@ -23,23 +23,20 @@ func main() {
 		panic(err)
 	}
 
-	//if err = json.Unmarshal(input, &doc); err != nil {
-	//	panic(err)
-	//}
 	fmt.Println(doc.BasePath)
 	for path, items := range doc.Paths {
 		fmt.Println(path)
-		fmt.Println(items.Operations())
-		fmt.Println(items.Parameters)
+		for op, hoge := range items.Operations() {
+			fmt.Println(op)
+			for _, hoge := range hoge.Parameters {
+				fmt.Printf("debug: %v\n", hoge)
+			}
+			//for resp, hoge := range hoge.Responses {
+			// fmt.Printf("debug: %v\n", resp)
+			// fmt.Printf("debug: %v\n", hoge)
+			//}
+		}
 	}
-
-	//outputYAML, err := yaml.Marshal(doc)
-	//if err != nil {
-	//	panic(err)
-	//}
-	////outputYAML
-	//fmt.Println(outputYAML)
-
 }
 
 //swagger: "2.0"
