@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 
@@ -8,12 +9,16 @@ import (
 	"github.com/ghodss/yaml"
 )
 
-const (
-	swaggerFilePath = "swagger.yaml"
-)
-
 func main() {
-	input, err := ioutil.ReadFile(swaggerFilePath)
+	f := flag.String("f", "", "file path")
+	flag.Parse()
+
+	filePath := *f
+	if filePath == "" {
+		panic("requied file path")
+	}
+
+	input, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic(err)
 	}
